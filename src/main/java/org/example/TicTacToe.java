@@ -9,14 +9,18 @@ public class TicTacToe {
     private static final char PLAYER_O = 'О';
     private static final char[] board = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     private static byte winner = 0;
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public void playGame() {
-        Scanner scanner = new Scanner(System.in);
+    private TicTacToe() {
+
+    }
+
+    public static void playGame() {
         displayInstructions();
 
         while (winner == 0) {
             displayBoard();
-            playerMove(scanner);
+            playerMove();
             checkForWinner(PLAYER_X);
             if (winner == 0) {
                 computerMove();
@@ -42,7 +46,7 @@ public class TicTacToe {
         logger.info(boardString);
     }
 
-    private static void playerMove(Scanner scanner) {
+    private static void playerMove() {
         while (true) {
             logger.info("Enter your turn (1-9): ");
             byte input = scanner.nextByte();
